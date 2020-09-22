@@ -43,7 +43,8 @@ Christian Paredes
       {quote:`One child, one teacher, one book, one pen can change the world.`,
        author: `Malala Yousafzai`,
        citation: "YouTube",
-       year: "2016"}, 
+       year: "2016",
+       url: "https://www.youtube.com/watch?v=3rNhZu3ttIU"}, 
 
 
       {quote:`Art washes away from the soul the dust of everyday life.`,
@@ -110,9 +111,11 @@ function printQuote() {
   if(quoteObject.year != null) {
     html += `<span class="year:before">, ${quoteObject.year}</span>`
   }
-  //else {
-  //  html += `<span class="year:before"></span>`
-  //}
+  
+  // Add a URL link to a video from on of the quotes on Youtube
+  if (quoteObject.url != null) {
+    html += `<a class="url" href="${quoteObject.url}"> Watch the video</href>`
+  }
 
   // 5. After the two if statements, concatenate the closing </p> 
   // tag to the HTML string
@@ -122,6 +125,37 @@ function printQuote() {
   // complete HTML string
   document.querySelector("div.quote-box").innerHTML = html;
 }
+
+// Creates three random numbers from 0 to 255 for each RGB value
+function changeBackgroundColor() {
+  let red = Math.floor(Math.random() * 256);
+  let green = Math.floor(Math.random() * 256);
+  let blue = Math.floor(Math.random() * 256);
+
+  // Create a string that will be used to randomly set the background-color for the body element of the page  
+  let newRandColor= `background-color: rgb(${red}, ${green}, ${blue});`
+
+  // Select the body element and add a new random background color
+  let bodyElement = document.querySelector("body");
+  bodyElement.setAttribute('style', newRandColor);
+  
+}
+
+  // Refreshes quotes every 5 seconds
+  function refreshQuote() {
+    setInterval( printQuote, 3000);
+}
+
+// Refreshes background color every 5 seconds
+function refreshBackground () {
+  setInterval( changeBackgroundColor, 3000);
+}
+
+// Calls refreshQuote to refresh page every 5 seconds
+refreshQuote();
+
+// Calls refreshBackGround to refresh page every 5 seconds
+refreshBackground();
 
 /***
  * click event listener for the print quote button
