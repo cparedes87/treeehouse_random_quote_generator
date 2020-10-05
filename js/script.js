@@ -141,12 +141,12 @@ function changeBackgroundColor() {
   
 }
 
-  // Refreshes quotes every 5 seconds
+  // Refreshes quotes every 9 seconds
   function refreshQuote() {
     setInterval( printQuote, 9000);
 }
 
-// Refreshes background color every 5 seconds
+// Refreshes background color every 9 seconds
 function refreshBackground () {
   setInterval( changeBackgroundColor, 9000);
 }
